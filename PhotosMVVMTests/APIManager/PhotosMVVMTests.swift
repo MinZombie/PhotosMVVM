@@ -17,7 +17,7 @@ class PhotosMVVMTests: XCTestCase {
     }
 
     func test_url주소가_제대로_반환되는지() {
-        
+        let expectedUrl = "https://api.unsplash.com/search/photos?client_id=\(Bundle.main.apiKey)&page=1&query=canada"
         let result = service.url(
             endpoint: .search,
             params: [
@@ -27,7 +27,7 @@ class PhotosMVVMTests: XCTestCase {
         )
         
         if let result = result {
-            XCTAssertTrue(result.absoluteString.contains("canada"))
+            XCTAssertEqual(expectedUrl, result.absoluteString)
         } else {
             XCTFail()
         }

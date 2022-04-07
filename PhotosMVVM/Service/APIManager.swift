@@ -23,7 +23,7 @@ final class APIManager {
         
         queryItems.append(.init(name: "client_id", value: Bundle.main.apiKey))
         
-        baseUrl += queryItems.map { "\($0.name)=\($0.value ?? "")" }.joined(separator: "&")
+        baseUrl += queryItems.map { "\($0.name)=\($0.value ?? "")" }.sorted(by: <).joined(separator: "&")
         
         return URL(string: baseUrl)
     }
