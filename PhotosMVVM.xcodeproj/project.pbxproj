@@ -15,7 +15,19 @@
 		A9B4793027FEB5D400A2757A /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4792F27FEB5D400A2757A /* ViewModel.swift */; };
 		A9B4793227FEB5D900A2757A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4793127FEB5D900A2757A /* Model.swift */; };
 		A9B4793427FEB5E300A2757A /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4793327FEB5E300A2757A /* APIManager.swift */; };
+		A9B4793C27FEBAAA00A2757A /* PhotosMVVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4793B27FEBAAA00A2757A /* PhotosMVVMTests.swift */; };
+		A9B4794427FEBD3400A2757A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4794327FEBD3400A2757A /* Extensions.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A9B4793D27FEBAAA00A2757A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9B4790B27FEACF800A2757A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A9B4791227FEACF800A2757A;
+			remoteInfo = PhotosMVVM;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A9B4791327FEACF800A2757A /* PhotosMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,10 +40,20 @@
 		A9B4792F27FEB5D400A2757A /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		A9B4793127FEB5D900A2757A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A9B4793327FEB5E300A2757A /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		A9B4793927FEBAAA00A2757A /* PhotosMVVMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotosMVVMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9B4793B27FEBAAA00A2757A /* PhotosMVVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosMVVMTests.swift; sourceTree = "<group>"; };
+		A9B4794327FEBD3400A2757A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A9B4791027FEACF800A2757A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9B4793627FEBAAA00A2757A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				A9B4791527FEACF800A2757A /* PhotosMVVM */,
+				A9B4793A27FEBAAA00A2757A /* PhotosMVVMTests */,
 				A9B4791427FEACF800A2757A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				A9B4791327FEACF800A2757A /* PhotosMVVM.app */,
+				A9B4793927FEBAAA00A2757A /* PhotosMVVMTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,6 +84,7 @@
 		A9B4791527FEACF800A2757A /* PhotosMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				A9B4794227FEBB3900A2757A /* Utility */,
 				A9B4792E27FEB54E00A2757A /* Others */,
 				A9B4792A27FEB4E000A2757A /* Service */,
 				A9B4792D27FEB4F500A2757A /* View */,
@@ -113,6 +138,22 @@
 			path = Others;
 			sourceTree = "<group>";
 		};
+		A9B4793A27FEBAAA00A2757A /* PhotosMVVMTests */ = {
+			isa = PBXGroup;
+			children = (
+				A9B4793B27FEBAAA00A2757A /* PhotosMVVMTests.swift */,
+			);
+			path = PhotosMVVMTests;
+			sourceTree = "<group>";
+		};
+		A9B4794227FEBB3900A2757A /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				A9B4794327FEBD3400A2757A /* Extensions.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -133,6 +174,24 @@
 			productReference = A9B4791327FEACF800A2757A /* PhotosMVVM.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A9B4793827FEBAAA00A2757A /* PhotosMVVMTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9B4793F27FEBAAA00A2757A /* Build configuration list for PBXNativeTarget "PhotosMVVMTests" */;
+			buildPhases = (
+				A9B4793527FEBAAA00A2757A /* Sources */,
+				A9B4793627FEBAAA00A2757A /* Frameworks */,
+				A9B4793727FEBAAA00A2757A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A9B4793E27FEBAAA00A2757A /* PBXTargetDependency */,
+			);
+			name = PhotosMVVMTests;
+			productName = PhotosMVVMTests;
+			productReference = A9B4793927FEBAAA00A2757A /* PhotosMVVMTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -145,6 +204,10 @@
 				TargetAttributes = {
 					A9B4791227FEACF800A2757A = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					A9B4793827FEBAAA00A2757A = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = A9B4791227FEACF800A2757A;
 					};
 				};
 			};
@@ -162,6 +225,7 @@
 			projectRoot = "";
 			targets = (
 				A9B4791227FEACF800A2757A /* PhotosMVVM */,
+				A9B4793827FEBAAA00A2757A /* PhotosMVVMTests */,
 			);
 		};
 /* End PBXProject section */
@@ -173,6 +237,13 @@
 			files = (
 				A9B4792327FEACFA00A2757A /* LaunchScreen.storyboard in Resources */,
 				A9B4792027FEACFA00A2757A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9B4793727FEBAAA00A2757A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,10 +260,27 @@
 				A9B4791727FEACF800A2757A /* AppDelegate.swift in Sources */,
 				A9B4793027FEB5D400A2757A /* ViewModel.swift in Sources */,
 				A9B4791927FEACF800A2757A /* SceneDelegate.swift in Sources */,
+				A9B4794427FEBD3400A2757A /* Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9B4793527FEBAAA00A2757A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9B4793C27FEBAAA00A2757A /* PhotosMVVMTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A9B4793E27FEBAAA00A2757A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A9B4791227FEACF800A2757A /* PhotosMVVM */;
+			targetProxy = A9B4793D27FEBAAA00A2757A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A9B4792127FEACFA00A2757A /* LaunchScreen.storyboard */ = {
@@ -378,6 +466,42 @@
 			};
 			name = Release;
 		};
+		A9B4794027FEBAAA00A2757A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J2BXCFFMKP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.headingtodev.PhotosMVVMTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotosMVVM.app/PhotosMVVM";
+			};
+			name = Debug;
+		};
+		A9B4794127FEBAAA00A2757A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J2BXCFFMKP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.headingtodev.PhotosMVVMTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotosMVVM.app/PhotosMVVM";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -395,6 +519,15 @@
 			buildConfigurations = (
 				A9B4792827FEACFA00A2757A /* Debug */,
 				A9B4792927FEACFA00A2757A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9B4793F27FEBAAA00A2757A /* Build configuration list for PBXNativeTarget "PhotosMVVMTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9B4794027FEBAAA00A2757A /* Debug */,
+				A9B4794127FEBAAA00A2757A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
