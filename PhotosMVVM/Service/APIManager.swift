@@ -12,8 +12,35 @@ enum Endpoint: String {
 }
 
 final class APIManager {
+    
+    var urlSession: URLSessionProtocol
+    
+    init(urlSession: URLSessionProtocol) {
+        self.urlSession = urlSession
+    }
+    
+    func request(completion: @escaping (Photos) -> Void) {
+        let url = URL(string: "https://api.unsplash.com/search/photos?client_id=\(Bundle.main.apiKey)&page=1&query=canada")!
+        
+        let task = urlSession.dataTask(with: url) { data, _, error in
+            
+            guard let data = data, error == nil else {
+                return
+            }
+            do {
+                
+                let result = try JSONDecoder().decode(Photos.self, from: data)
+                completion(result)
+            } catch {
+                
+                return
+            }
+        }
+        task.resume()
+    }
+    
     func url(endpoint: Endpoint, params: [String: String]) -> URL? {
-        var baseUrl = "https://api.unsplash.com/" + endpoint.rawValue + "?" 
+        var baseUrl = "https://api.unsplash.com/" + endpoint.rawValue + "?"
         
         var queryItems = [URLQueryItem]()
         
