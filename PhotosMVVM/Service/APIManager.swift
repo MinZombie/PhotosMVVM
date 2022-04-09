@@ -11,7 +11,11 @@ enum Endpoint: String {
     case search = "search/photos"
 }
 
-final class APIManager {
+protocol ServiceProtocol {
+    func search(query: String, completion: @escaping (Photos) -> Void)
+}
+
+final class APIManager: ServiceProtocol {
     
     var urlSession: URLSessionProtocol
     
@@ -19,8 +23,21 @@ final class APIManager {
         self.urlSession = urlSession
     }
     
-    func request(completion: @escaping (Photos) -> Void) {
-        let url = URL(string: "https://api.unsplash.com/search/photos?client_id=\(Bundle.main.apiKey)&page=1&query=canada")!
+    func search(query: String, completion: @escaping (Photos) -> Void) {
+        request(
+            url: url(
+                endpoint: .search,
+                params: [
+                    "page" : "1",
+                    "query": query
+                ]
+            ),
+            completion: completion
+        )
+    }
+    
+    func request(url: URL?, completion: @escaping (Photos) -> Void) {
+        guard let url = url else { return }
         
         let task = urlSession.dataTask(with: url) { data, _, error in
             
