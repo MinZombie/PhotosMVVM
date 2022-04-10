@@ -12,7 +12,7 @@ enum Endpoint: String {
 }
 
 protocol ServiceProtocol {
-    func search(query: String, completion: @escaping (Photos) -> Void)
+    func search(query: String, completion: @escaping (Result<Photos, Error>) -> Void)
 }
 
 final class APIManager: ServiceProtocol {
@@ -23,7 +23,7 @@ final class APIManager: ServiceProtocol {
         self.urlSession = urlSession
     }
     
-    func search(query: String, completion: @escaping (Photos) -> Void) {
+    func search(query: String, completion: @escaping (Result<Photos, Error>) -> Void) {
         request(
             url: url(
                 endpoint: .search,
@@ -36,7 +36,7 @@ final class APIManager: ServiceProtocol {
         )
     }
     
-    func request(url: URL?, completion: @escaping (Photos) -> Void) {
+    func request(url: URL?, completion: @escaping (Result<Photos, Error>) -> Void) {
         guard let url = url else { return }
         
         let task = urlSession.dataTask(with: url) { data, _, error in
@@ -47,10 +47,10 @@ final class APIManager: ServiceProtocol {
             do {
                 
                 let result = try JSONDecoder().decode(Photos.self, from: data)
-                completion(result)
+                completion(.success(result))
             } catch {
                 
-                return
+                completion(.failure(error))
             }
         }
         task.resume()
