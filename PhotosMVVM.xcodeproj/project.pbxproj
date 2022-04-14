@@ -22,6 +22,7 @@
 		A9B479502800734700A2757A /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4794F2800734700A2757A /* SearchViewModelTests.swift */; };
 		A9B4795228007A3700A2757A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4795128007A3700A2757A /* Observable.swift */; };
 		A9B479542801537400A2757A /* SearchPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B479532801537400A2757A /* SearchPhotoCollectionViewCell.swift */; };
+		A9B479572804010300A2757A /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B479562804010300A2757A /* ViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		A9B4794F2800734700A2757A /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		A9B4795128007A3700A2757A /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		A9B479532801537400A2757A /* SearchPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		A9B479562804010300A2757A /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 		A9B4793A27FEBAAA00A2757A /* PhotosMVVMTests */ = {
 			isa = PBXGroup;
 			children = (
+				A9B47955280400F700A2757A /* View */,
 				A9B4794E2800731300A2757A /* ViewModel */,
 				A9B4794927FED2DB00A2757A /* APIManager */,
 			);
@@ -199,6 +202,14 @@
 				A9B4794F2800734700A2757A /* SearchViewModelTests.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A9B47955280400F700A2757A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A9B479562804010300A2757A /* ViewControllerTests.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +331,7 @@
 			files = (
 				A9B4794627FED25E00A2757A /* StubURLSession.swift in Sources */,
 				A9B4793C27FEBAAA00A2757A /* APIManagerTests.swift in Sources */,
+				A9B479572804010300A2757A /* ViewControllerTests.swift in Sources */,
 				A9B479502800734700A2757A /* SearchViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

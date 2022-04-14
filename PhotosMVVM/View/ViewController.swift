@@ -10,15 +10,25 @@ import UIKit
 class ViewController: UIViewController {
     
     private let identifier = String(describing: ViewController.self)
-    private let searchController = UISearchController(searchResultsController: nil)
+    private var viewModel: SearchViewModel
     
-    private var collectionView: UICollectionView?
+    var collectionView: UICollectionView?
+    let searchController = UISearchController(searchResultsController: nil)
     
     private let activityIndicatorView: UIActivityIndicatorView = {
        let indicator = UIActivityIndicatorView()
         indicator.style = .large
         return indicator
     }()
+    
+    init(viewModel: SearchViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +37,16 @@ class ViewController: UIViewController {
         setUpNavigation()
         setUpSearchController()
         setUpactivityIndicatorView()
+        observe(viewModel: viewModel)
+    }
+    
+    private func observe(viewModel: SearchViewModel) {
+        viewModel.photos.bind { [weak self] photos in
+            print(#function)
+            DispatchQueue.main.async {
+                self?.collectionView?.reloadData()
+            }
+        }
     }
     
     private func setUpactivityIndicatorView() {
@@ -41,7 +61,7 @@ class ViewController: UIViewController {
     }
     
     private func setUpSearchController() {
-        self.searchController.delegate = self
+        self.searchController.searchBar.delegate = self
         
     }
 }
@@ -97,7 +117,7 @@ extension ViewController {
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.viewModel.photos.value?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -106,13 +126,20 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
             for: indexPath
         ) as? SearchPhotoCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.backgroundColor = [UIColor.red, UIColor.orange, UIColor.blue, UIColor.gray, UIColor.green].randomElement()
+        if let photos = self.viewModel.photos.value {
+            cell.configureItem(with: photos[indexPath.row])
+        }
         
         return cell
     }
 }
 
-// MARK: - UISearchControllerDelegate
-extension ViewController: UISearchControllerDelegate {
-    
+// MARK: - UISearchBarDelegate
+extension ViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text,
+              !text.trimmingCharacters(in: .whitespaces).isEmpty else { return }
+        
+        viewModel.search(text: text)
+    }
 }
