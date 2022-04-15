@@ -66,6 +66,7 @@ final class APIManager: ServiceProtocol {
         }
         
         queryItems.append(.init(name: "client_id", value: Bundle.main.apiKey))
+        queryItems.append(.init(name: "orientation", value: "portrait"))
         
         baseUrl += queryItems.map { "\($0.name)=\($0.value ?? "")" }.sorted(by: <).joined(separator: "&")
         

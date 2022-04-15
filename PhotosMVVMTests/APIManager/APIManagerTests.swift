@@ -13,7 +13,7 @@ class APIManagerTests: XCTestCase {
     var service: APIManager!
     var urlSession: URLSessionProtocol!
     var dummy: DummyData!
-    let urlString = "https://api.unsplash.com/search/photos?client_id=\(Bundle.main.apiKey)&page=1&query=canada"
+    let urlString = "https://api.unsplash.com/search/photos?client_id=\(Bundle.main.apiKey)&orientation=portrait&page=1&query=canada"
     let mockPhotos = Photos(total: 10000, results: [Photo(id: "1", urls: Thumbnail(thumb: "https://images.unsplash.com/photo-1517935706615-2717063c2225?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMDc5NzV8MHwxfHNlYXJjaHwxfHxjYW5hZGF8ZW58MHx8fHwxNjQ5MzI4NzYw&ixlib=rb-1.2.1&q=80&w=200"))])
     
     override func setUp() {
@@ -22,6 +22,12 @@ class APIManagerTests: XCTestCase {
         urlSession = StubURLSession(dummy: dummy)
         service = APIManager(urlSession: urlSession)
 
+    }
+    
+    override func tearDown() {
+        service = nil
+        urlSession = nil
+        dummy = nil
     }
     
     func test_request함수가_decode되는지() {
