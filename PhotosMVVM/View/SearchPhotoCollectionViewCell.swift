@@ -11,9 +11,10 @@ class SearchPhotoCollectionViewCell: UICollectionViewCell {
     
     static let identifier: String = String(describing: SearchPhotoCollectionViewCell.self)
     
-    let imageView: UIImageView = {
+    private let imageView: UIImageView = {
        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -24,6 +25,10 @@ class SearchPhotoCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        imageView.image = nil
     }
     
     private func setUpImageView() {

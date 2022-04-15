@@ -13,8 +13,7 @@ class ViewController: UIViewController {
     private var viewModel: SearchViewModel
     
     var collectionView: UICollectionView?
-    let searchController = UISearchController(searchResultsController: nil)
-    
+    private(set) var searchController = UISearchController(searchResultsController: nil)
     private(set) var activityIndicatorView: UIActivityIndicatorView = {
        let indicator = UIActivityIndicatorView()
         indicator.style = .large
@@ -77,7 +76,7 @@ class ViewController: UIViewController {
     
     private func setUpSearchController() {
         self.searchController.searchBar.delegate = self
-        
+        self.searchController.searchBar.autocapitalizationType = .none
     }
 }
 
