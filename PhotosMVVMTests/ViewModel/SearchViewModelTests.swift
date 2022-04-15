@@ -27,7 +27,7 @@ class SearchViewModelTests: XCTestCase {
     
     func test_Result타입이_failure일때_에러가나는지() {
         // given
-        service.mockResult = .failure(NSError())
+        service.mockResult = .failure(NSError(domain: "", code: 0, userInfo: nil))
         
         // when
         viewModel.search(text: "dortmund")
@@ -50,7 +50,27 @@ class SearchViewModelTests: XCTestCase {
         XCTAssertNotNil(viewModel.photos)
     }
     
+    func test_검색_하자마자_애니메이션이_시작하는지() {
+        
+        // when
+        viewModel.search(text: "canada")
+        
+        // then
+        XCTAssertEqual(viewModel.isLoading.value, true)
+    }
     
+    func test_검색이_끝나고_애니메이션이_멈추는지() {
+        
+        // given
+        let photos = Photos(total: 10000, results: [Photo(id: "1", urls: Thumbnail(thumb: "www"))])
+        service.mockResult = .success(photos)
+        
+        // when
+        viewModel.search(text: "canada")
+        
+        // then
+        XCTAssertEqual(viewModel.isLoading.value, false)
+    }
 }
 
 class MockPhotoService: ServiceProtocol {

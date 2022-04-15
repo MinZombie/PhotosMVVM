@@ -24,7 +24,7 @@ class ViewControllerTests: XCTestCase {
         vc = nil
     }
 
-    func test_viewcontroller() {
+    func test_서치바의_서치버튼을_눌렀을때_잘_동작하는지() {
         // given
         let searchBar = vc.searchController.searchBar
         
@@ -41,9 +41,9 @@ class ViewControllerTests: XCTestCase {
 }
 
 class MockViewModel: SearchViewModel {
-    
-    var receivedImageView: UIImageView!
     var inputText: String = ""
+
+    var isLoading: Observable<Bool> = Observable(true)
     var photos: Observable<[Photo]?> = Observable(
         [
             Photo(id: "1", urls: Thumbnail(thumb: "a")),

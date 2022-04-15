@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     var collectionView: UICollectionView?
     let searchController = UISearchController(searchResultsController: nil)
     
-    private let activityIndicatorView: UIActivityIndicatorView = {
+    private(set) var activityIndicatorView: UIActivityIndicatorView = {
        let indicator = UIActivityIndicatorView()
         indicator.style = .large
         return indicator
@@ -47,10 +47,25 @@ class ViewController: UIViewController {
                 self?.collectionView?.reloadData()
             }
         }
+        
+        viewModel.isLoading.bind { [weak self] isLoading in
+            DispatchQueue.main.async {
+                if isLoading {
+                    self?.activityIndicatorView.startAnimating()
+                } else {
+                    self?.activityIndicatorView.stopAnimating()
+                }
+            }
+        }
     }
     
     private func setUpactivityIndicatorView() {
         view.addSubview(activityIndicatorView)
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
     }
 
     private func setUpNavigation() {
