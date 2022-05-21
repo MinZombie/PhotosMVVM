@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let sessionManager = URLSession.shared
         let service = APIManager(urlSession: sessionManager)
         let viewModel = DefaultSearchViewModel(service: service)
-        let vc = ViewController(viewModel: viewModel)
+        let vc = PhotoListViewController(viewModel: viewModel)
         let navVC = UINavigationController(rootViewController: vc)
         window.rootViewController = navVC
         window.makeKeyAndVisible()

@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class PhotoListViewController: UIViewController {
     
-    private let identifier = String(describing: ViewController.self)
+    private let identifier = String(describing: PhotoListViewController.self)
     private var viewModel: SearchViewModel!
     
     var collectionView: UICollectionView?
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: - Set up UICollectionView
-extension ViewController {
+extension PhotoListViewController {
     private func setUpCollectionView() {
         let layout = UICollectionViewCompositionalLayout { _, _ in
             self.layout()
@@ -127,7 +127,7 @@ extension ViewController {
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
-extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension PhotoListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel.photos.value?.count ?? 0
     }
@@ -147,7 +147,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 }
 
 // MARK: - UISearchBarDelegate
-extension ViewController: UISearchBarDelegate {
+extension PhotoListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text,
               !text.trimmingCharacters(in: .whitespaces).isEmpty else { return }

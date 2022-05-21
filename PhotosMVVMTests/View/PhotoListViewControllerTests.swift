@@ -8,14 +8,14 @@
 import XCTest
 @testable import PhotosMVVM
 
-class ViewControllerTests: XCTestCase {
+class PhotoListViewControllerTests: XCTestCase {
     
     var mockViewModel: MockViewModel!
-    var vc: ViewController!
+    var vc: PhotoListViewController!
     
     override func setUp() {
         mockViewModel = MockViewModel()
-        vc = ViewController(viewModel: mockViewModel)
+        vc = PhotoListViewController(viewModel: mockViewModel)
         vc.loadViewIfNeeded()
     }
     

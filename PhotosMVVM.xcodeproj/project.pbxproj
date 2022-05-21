@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		A9B4791727FEACF800A2757A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4791627FEACF800A2757A /* AppDelegate.swift */; };
 		A9B4791927FEACF800A2757A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4791827FEACF800A2757A /* SceneDelegate.swift */; };
-		A9B4791B27FEACF800A2757A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4791A27FEACF800A2757A /* ViewController.swift */; };
+		A9B4791B27FEACF800A2757A /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4791A27FEACF800A2757A /* PhotoListViewController.swift */; };
 		A9B4792027FEACFA00A2757A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B4791F27FEACFA00A2757A /* Assets.xcassets */; };
 		A9B4792327FEACFA00A2757A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9B4792127FEACFA00A2757A /* LaunchScreen.storyboard */; };
 		A9B4793027FEB5D400A2757A /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4792F27FEB5D400A2757A /* SearchViewModel.swift */; };
@@ -22,7 +22,7 @@
 		A9B479502800734700A2757A /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4794F2800734700A2757A /* SearchViewModelTests.swift */; };
 		A9B4795228007A3700A2757A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4795128007A3700A2757A /* Observable.swift */; };
 		A9B479542801537400A2757A /* SearchPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B479532801537400A2757A /* SearchPhotoCollectionViewCell.swift */; };
-		A9B479572804010300A2757A /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B479562804010300A2757A /* ViewControllerTests.swift */; };
+		A9B479572804010300A2757A /* PhotoListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B479562804010300A2757A /* PhotoListViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,7 @@
 		A9B4791327FEACF800A2757A /* PhotosMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B4791627FEACF800A2757A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9B4791827FEACF800A2757A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A9B4791A27FEACF800A2757A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A9B4791A27FEACF800A2757A /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		A9B4791F27FEACFA00A2757A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9B4792227FEACFA00A2757A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9B4792427FEACFA00A2757A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 		A9B4794F2800734700A2757A /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		A9B4795128007A3700A2757A /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		A9B479532801537400A2757A /* SearchPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
-		A9B479562804010300A2757A /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
+		A9B479562804010300A2757A /* PhotoListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +134,7 @@
 		A9B4792D27FEB4F500A2757A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A9B4791A27FEACF800A2757A /* ViewController.swift */,
+				A9B4791A27FEACF800A2757A /* PhotoListViewController.swift */,
 				A9B479532801537400A2757A /* SearchPhotoCollectionViewCell.swift */,
 				A9B4792127FEACFA00A2757A /* LaunchScreen.storyboard */,
 			);
@@ -207,7 +207,7 @@
 		A9B47955280400F700A2757A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A9B479562804010300A2757A /* ViewControllerTests.swift */,
+				A9B479562804010300A2757A /* PhotoListViewControllerTests.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -315,7 +315,7 @@
 				A9B4793427FEB5E300A2757A /* APIManager.swift in Sources */,
 				A9B479542801537400A2757A /* SearchPhotoCollectionViewCell.swift in Sources */,
 				A9B4793227FEB5D900A2757A /* Model.swift in Sources */,
-				A9B4791B27FEACF800A2757A /* ViewController.swift in Sources */,
+				A9B4791B27FEACF800A2757A /* PhotoListViewController.swift in Sources */,
 				A9B4791727FEACF800A2757A /* AppDelegate.swift in Sources */,
 				A9B4794B27FED32600A2757A /* URLSessionProtocol.swift in Sources */,
 				A9B4793027FEB5D400A2757A /* SearchViewModel.swift in Sources */,
@@ -331,7 +331,7 @@
 			files = (
 				A9B4794627FED25E00A2757A /* StubURLSession.swift in Sources */,
 				A9B4793C27FEBAAA00A2757A /* APIManagerTests.swift in Sources */,
-				A9B479572804010300A2757A /* ViewControllerTests.swift in Sources */,
+				A9B479572804010300A2757A /* PhotoListViewControllerTests.swift in Sources */,
 				A9B479502800734700A2757A /* SearchViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
