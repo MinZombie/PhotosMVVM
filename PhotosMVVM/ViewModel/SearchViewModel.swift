@@ -12,7 +12,7 @@ protocol SearchViewModelInput {
 }
 
 protocol SearchViewModelOutput {
-    var photos: Observable<[Photo]?> { get }
+    var photos: Observable<[Photo]> { get }
     var isLoading: Observable<Bool> { get }
 }
 
@@ -21,7 +21,7 @@ protocol SearchViewModel: SearchViewModelInput, SearchViewModelOutput {
 }
 
 final class DefaultSearchViewModel: SearchViewModel {
-    var photos: Observable<[Photo]?> = Observable(nil)
+    var photos: Observable<[Photo]> = Observable([])
     var isLoading: Observable<Bool> = Observable(false)
     
     var service: ServiceProtocol
