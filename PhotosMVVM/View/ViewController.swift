@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     private let identifier = String(describing: ViewController.self)
-    private var viewModel: SearchViewModel
+    private var viewModel: SearchViewModel!
     
     var collectionView: UICollectionView?
     private(set) var searchController = UISearchController(searchResultsController: nil)
@@ -20,13 +20,9 @@ class ViewController: UIViewController {
         return indicator
     }()
     
-    init(viewModel: SearchViewModel) {
+    convenience init(viewModel: SearchViewModel) {
+        self.init()
         self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -51,8 +47,10 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 if isLoading {
                     self?.activityIndicatorView.startAnimating()
+                    self?.collectionView?.isHidden = true
                 } else {
                     self?.activityIndicatorView.stopAnimating()
+                    self?.collectionView?.isHidden = false
                 }
             }
         }
@@ -155,5 +153,13 @@ extension ViewController: UISearchBarDelegate {
               !text.trimmingCharacters(in: .whitespaces).isEmpty else { return }
         
         viewModel.search(text: text)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.collectionView?.isHidden = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.collectionView?.isHidden = false
     }
 }
