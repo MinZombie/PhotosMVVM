@@ -129,7 +129,7 @@ extension PhotoListViewController {
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension PhotoListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.photos.value?.count ?? 0
+        return self.viewModel.photos.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -138,9 +138,7 @@ extension PhotoListViewController: UICollectionViewDataSource, UICollectionViewD
             for: indexPath
         ) as? SearchPhotoCollectionViewCell else { return UICollectionViewCell() }
         
-        if let photos = self.viewModel.photos.value {
-            cell.configureItem(with: photos[indexPath.row])
-        }
+        cell.configureItem(with: viewModel.photos.value[indexPath.row])
         
         return cell
     }
