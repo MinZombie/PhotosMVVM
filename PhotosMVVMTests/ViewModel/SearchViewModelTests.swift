@@ -39,7 +39,7 @@ class SearchViewModelTests: XCTestCase {
     func test_Result타입이_success일때_photos변수가_잘_저장이되는지() {
         
         // given
-        let photos = Photos(total: 10000, results: [Photo(id: "1", urls: Thumbnail(thumb: "www"))])
+        let photos = Photos(total: 10000, totalPages: 1000, results: [Photo(id: "1", urls: Thumbnail(thumb: "www"))])
         service.mockResult = .success(photos)
         
         // when
@@ -47,7 +47,7 @@ class SearchViewModelTests: XCTestCase {
         
         
         // then
-        XCTAssertNotNil(viewModel.photos)
+        XCTAssertFalse(viewModel.photos.value.isEmpty)
     }
     
     func test_검색_하자마자_애니메이션이_시작하는지() {
@@ -62,7 +62,7 @@ class SearchViewModelTests: XCTestCase {
     func test_검색이_끝나고_애니메이션이_멈추는지() {
         
         // given
-        let photos = Photos(total: 10000, results: [Photo(id: "1", urls: Thumbnail(thumb: "www"))])
+        let photos = Photos(total: 10000, totalPages: 1000, results: [Photo(id: "1", urls: Thumbnail(thumb: "www"))])
         service.mockResult = .success(photos)
         
         // when
@@ -71,11 +71,31 @@ class SearchViewModelTests: XCTestCase {
         // then
         XCTAssertEqual(viewModel.isLoading.value, false)
     }
+    
+    func test_다음페이지_요청이_잘되는지() {
+        // given
+        let photos = Photos(
+            total: 10000,
+            totalPages: 1000,
+            results: [
+                Photo(id: "1", urls: Thumbnail(thumb: "www")),
+                Photo(id: "2", urls: Thumbnail(thumb: "www"))
+            ]
+        )
+        service.mockResult = .success(photos)
+        
+        // when
+        viewModel.fetchNextPage()
+        
+        // then
+        XCTAssertEqual(viewModel.photos.value.count, photos.results.count)
+    }
 }
 
 class MockPhotoService: ServiceProtocol {
     var mockResult: Result<Photos, Error>?
-    func search(query: String, completion: @escaping (Result<Photos, Error>) -> Void) {
+    
+    func search(query: String, page: Int, completion: @escaping (Result<Photos, Error>) -> Void) {
         if let result = mockResult {
             completion(result)
         }

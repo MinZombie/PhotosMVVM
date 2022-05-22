@@ -12,7 +12,7 @@ enum Endpoint: String {
 }
 
 protocol ServiceProtocol {
-    func search(query: String, completion: @escaping (Result<Photos, Error>) -> Void)
+    func search(query: String, page: Int, completion: @escaping (Result<Photos, Error>) -> Void)
 }
 
 final class APIManager: ServiceProtocol {
@@ -23,12 +23,12 @@ final class APIManager: ServiceProtocol {
         self.urlSession = urlSession
     }
     
-    func search(query: String, completion: @escaping (Result<Photos, Error>) -> Void) {
+    func search(query: String, page: Int, completion: @escaping (Result<Photos, Error>) -> Void) {
         request(
             url: url(
                 endpoint: .search,
                 params: [
-                    "page" : "1",
+                    "page" : "\(page)",
                     "query": query
                 ]
             ),

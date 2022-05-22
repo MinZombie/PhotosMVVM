@@ -9,7 +9,14 @@ import Foundation
 
 struct Photos: Codable {
     var total: Int
+    var totalPages: Int
     var results: [Photo]
+    
+    enum CodingKeys: String, CodingKey {
+        case total
+        case totalPages = "total_pages"
+        case results
+    }
 }
 
 struct Photo: Codable {

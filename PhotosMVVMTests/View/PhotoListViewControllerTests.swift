@@ -44,7 +44,7 @@ class MockViewModel: SearchViewModel {
     var inputText: String = ""
 
     var isLoading: Observable<Bool> = Observable(true)
-    var photos: Observable<[Photo]?> = Observable(
+    var photos: Observable<[Photo]> = Observable(
         [
             Photo(id: "1", urls: Thumbnail(thumb: "a")),
             Photo(id: "2", urls: Thumbnail(thumb: "b")),
@@ -53,5 +53,9 @@ class MockViewModel: SearchViewModel {
     
     func search(text: String) {
         self.inputText = text
+    }
+    
+    func fetchNextPage() {
+        
     }
 }
