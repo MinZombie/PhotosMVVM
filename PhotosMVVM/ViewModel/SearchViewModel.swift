@@ -64,7 +64,7 @@ extension DefaultSearchViewModel {
     
     func fetchNextPage() {
         guard self.page < self.totalPages else { return }
-        self.isLoading.value = true
+        
         self.page += 1
         
         service.search(
@@ -88,7 +88,6 @@ extension DefaultSearchViewModel {
                     print(error)
                 }
                 
-                self.isLoading.value = false
             }
     }
 }

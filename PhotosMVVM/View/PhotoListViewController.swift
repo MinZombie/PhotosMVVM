@@ -142,6 +142,16 @@ extension PhotoListViewController: UICollectionViewDataSource, UICollectionViewD
         
         return cell
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        let contentSize = scrollView.contentSize.height
+        let frameHeight = scrollView.frame.size.height
+        
+        if frameHeight > contentSize - position {
+            viewModel.fetchNextPage()
+        }
+    }
 }
 
 // MARK: - UISearchBarDelegate
