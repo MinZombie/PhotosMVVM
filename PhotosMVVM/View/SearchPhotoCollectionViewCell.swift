@@ -18,9 +18,20 @@ class SearchPhotoCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    private var favoriteButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        button.tintColor = .white
+        button.configuration = .plain()
+        button.addTarget(self, action: #selector(didTapFavoriteButton(_:)), for: .touchUpInside)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpImageView()
+        setUpFavoriteButton()
     }
     
     required init?(coder: NSCoder) {
@@ -29,6 +40,7 @@ class SearchPhotoCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         imageView.image = nil
+        favoriteButton.tintColor = nil
     }
     
     private func setUpImageView() {
@@ -42,9 +54,25 @@ class SearchPhotoCollectionViewCell: UICollectionViewCell {
         ])
     }
     
+    private func setUpFavoriteButton() {
+        contentView.addSubview(favoriteButton)
+        NSLayoutConstraint.activate([
+            favoriteButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -8),
+            favoriteButton.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -8),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 36),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 36),
+        ])
+    }
+    
     func configureItem(with viewModel: Photo) {
         guard let thumbUrl = URL(string: viewModel.urls.thumb), let imageData = try? Data(contentsOf: thumbUrl) else { return }
         
         self.imageView.image = UIImage(data: imageData)
+    }
+}
+
+extension SearchPhotoCollectionViewCell {
+    @objc private func didTapFavoriteButton(_ sender: UIButton) {
+        print(#function)
     }
 }
