@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A93113B4283E0F43007E7679 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93113B3283E0F43007E7679 /* FavoriteViewController.swift */; };
 		A9B4791727FEACF800A2757A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4791627FEACF800A2757A /* AppDelegate.swift */; };
 		A9B4791927FEACF800A2757A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4791827FEACF800A2757A /* SceneDelegate.swift */; };
 		A9B4791B27FEACF800A2757A /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4791A27FEACF800A2757A /* PhotoListViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A93113B3283E0F43007E7679 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A9B4791327FEACF800A2757A /* PhotosMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B4791627FEACF800A2757A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9B4791827FEACF800A2757A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				A9B4791A27FEACF800A2757A /* PhotoListViewController.swift */,
 				A9B479532801537400A2757A /* SearchPhotoCollectionViewCell.swift */,
+				A93113B3283E0F43007E7679 /* FavoriteViewController.swift */,
 				A9B4792127FEACFA00A2757A /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -312,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A93113B4283E0F43007E7679 /* FavoriteViewController.swift in Sources */,
 				A9B4793427FEB5E300A2757A /* APIManager.swift in Sources */,
 				A9B479542801537400A2757A /* SearchPhotoCollectionViewCell.swift in Sources */,
 				A9B4793227FEB5D900A2757A /* Model.swift in Sources */,

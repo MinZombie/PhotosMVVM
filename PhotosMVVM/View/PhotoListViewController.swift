@@ -20,6 +20,13 @@ class PhotoListViewController: UIViewController {
         return indicator
     }()
     
+    private let rightBarButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Favorites", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        return button
+    }()
+    
     convenience init(viewModel: SearchViewModel) {
         self.init()
         self.viewModel = viewModel
@@ -28,10 +35,13 @@ class PhotoListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        
         setUpCollectionView()
         setUpNavigation()
         setUpSearchController()
         setUpactivityIndicatorView()
+        setUpBarButtonItem()
+        
         observe(viewModel: viewModel)
     }
     
@@ -56,6 +66,11 @@ class PhotoListViewController: UIViewController {
         }
     }
     
+    private func setUpBarButtonItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
+        rightBarButton.addTarget(self, action: #selector(didTapRightBarButton(_:)), for: .touchUpInside)
+    }
+    
     private func setUpactivityIndicatorView() {
         view.addSubview(activityIndicatorView)
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +90,14 @@ class PhotoListViewController: UIViewController {
     private func setUpSearchController() {
         self.searchController.searchBar.delegate = self
         self.searchController.searchBar.autocapitalizationType = .none
+    }
+}
+
+// MARK: - Objc
+extension PhotoListViewController {
+    @objc private func didTapRightBarButton(_ sender: UIButton) {
+        let vc = FavoriteViewController(viewModel: viewModel)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
