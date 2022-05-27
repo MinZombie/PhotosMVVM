@@ -51,10 +51,16 @@ extension DefaultSearchViewModel {
             self.isLoading.value = false
             
             switch photos {
-            case .success(let photos):
+            case .success(let response):
+                var photos = [Photo]()
+                response.results.forEach { result in
+                    
+                    let photo = Photo(id: result.id, imagePath: result.urls.thumb, isFavorite: false)
+                    photos.append(photo)
+                }
                 
-                self.photos.value = photos.results
-                self.totalPages = photos.totalPages
+                self.photos.value = photos
+                self.totalPages = response.totalPages
                 
             case .failure(let error):
                 print("error - \(error.localizedDescription)")
@@ -75,15 +81,17 @@ extension DefaultSearchViewModel {
                 
                 switch result {
                 case .success(let response):
-                    _ = response.results.map {
+                    
+                    response.results.forEach { result in
                         self.photos.value.append(
                             .init(
-                                id: $0.id,
-                                urls: $0.urls
+                                id: result.id,
+                                imagePath: result.urls.thumb,
+                                isFavorite: false
                             )
                         )
                     }
-                    
+                        
                 case .failure(let error):
                     print(error)
                 }

@@ -7,23 +7,23 @@
 
 import Foundation
 
-struct Photos: Codable {
+struct PhotoSearchResponse: Codable {
     var total: Int
     var totalPages: Int
-    var results: [Photo]
+    var results: [Result]
     
     enum CodingKeys: String, CodingKey {
         case total
         case totalPages = "total_pages"
         case results
     }
-}
-
-struct Photo: Codable {
-    var id: String
-    var urls: Thumbnail
-}
-
-struct Thumbnail: Codable {
-    var thumb: String
+    
+    struct Result: Codable {
+        var id: String
+        var urls: Thumbnail
+        
+        struct Thumbnail: Codable {
+            var thumb: String
+        }
+    }
 }

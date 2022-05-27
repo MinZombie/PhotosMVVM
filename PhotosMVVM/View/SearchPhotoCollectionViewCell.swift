@@ -65,7 +65,7 @@ class SearchPhotoCollectionViewCell: UICollectionViewCell {
     }
     
     func configureItem(with viewModel: Photo) {
-        guard let thumbUrl = URL(string: viewModel.urls.thumb), let imageData = try? Data(contentsOf: thumbUrl) else { return }
+        guard let thumbUrl = URL(string: viewModel.imagePath), let imageData = try? Data(contentsOf: thumbUrl) else { return }
         
         self.imageView.image = UIImage(data: imageData)
     }
