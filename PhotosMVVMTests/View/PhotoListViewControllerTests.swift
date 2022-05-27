@@ -46,8 +46,8 @@ class MockViewModel: SearchViewModel {
     var isLoading: Observable<Bool> = Observable(true)
     var photos: Observable<[Photo]> = Observable(
         [
-            Photo(id: "1", urls: Thumbnail(thumb: "a")),
-            Photo(id: "2", urls: Thumbnail(thumb: "b")),
+            Photo(id: "1", imagePath: "www", isFavorite: true),
+            Photo(id: "2", imagePath: "www", isFavorite: false)
         ]
     )
     

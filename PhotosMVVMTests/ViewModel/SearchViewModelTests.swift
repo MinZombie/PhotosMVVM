@@ -39,7 +39,7 @@ class SearchViewModelTests: XCTestCase {
     func test_Result타입이_success일때_photos변수가_잘_저장이되는지() {
         
         // given
-        let photos = Photos(total: 10000, totalPages: 1000, results: [Photo(id: "1", urls: Thumbnail(thumb: "www"))])
+        let photos = PhotoSearchResponse(total: 10000, totalPages: 1000, results: [.init(id: "1", urls: .init(thumb: "www"))])
         service.mockResult = .success(photos)
         
         // when
@@ -62,7 +62,7 @@ class SearchViewModelTests: XCTestCase {
     func test_검색이_끝나고_애니메이션이_멈추는지() {
         
         // given
-        let photos = Photos(total: 10000, totalPages: 1000, results: [Photo(id: "1", urls: Thumbnail(thumb: "www"))])
+        let photos = PhotoSearchResponse(total: 10000, totalPages: 1000, results: [.init(id: "1", urls: .init(thumb: "www"))])
         service.mockResult = .success(photos)
         
         // when
@@ -74,12 +74,12 @@ class SearchViewModelTests: XCTestCase {
     
     func test_다음페이지_요청이_잘되는지() {
         // given
-        let photos = Photos(
+        let photos = PhotoSearchResponse(
             total: 10000,
             totalPages: 1000,
             results: [
-                Photo(id: "1", urls: Thumbnail(thumb: "www")),
-                Photo(id: "2", urls: Thumbnail(thumb: "www"))
+                .init(id: "1", urls: .init(thumb: "www")),
+                .init(id: "2", urls: .init(thumb: "www"))
             ]
         )
         service.mockResult = .success(photos)
@@ -93,9 +93,9 @@ class SearchViewModelTests: XCTestCase {
 }
 
 class MockPhotoService: ServiceProtocol {
-    var mockResult: Result<Photos, Error>?
+    var mockResult: Result<PhotoSearchResponse, Error>?
     
-    func search(query: String, page: Int, completion: @escaping (Result<Photos, Error>) -> Void) {
+    func search(query: String, page: Int, completion: @escaping (Result<PhotoSearchResponse, Error>) -> Void) {
         if let result = mockResult {
             completion(result)
         }
