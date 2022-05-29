@@ -11,6 +11,9 @@ class SearchPhotoCollectionViewCell: UICollectionViewCell {
     
     static let identifier: String = String(describing: SearchPhotoCollectionViewCell.self)
     
+    private var viewModel: SearchViewModel!
+    private var item: Photo!
+    
     private let imageView: UIImageView = {
        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -64,15 +67,19 @@ class SearchPhotoCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func configureItem(with viewModel: Photo) {
-        guard let thumbUrl = URL(string: viewModel.imagePath), let imageData = try? Data(contentsOf: thumbUrl) else { return }
+    func configureItem(with item: Photo, viewModel: SearchViewModel) {
+        guard let thumbUrl = URL(string: item.imagePath), let imageData = try? Data(contentsOf: thumbUrl) else { return }
+        
+        self.viewModel = viewModel
+        self.item = item
         
         self.imageView.image = UIImage(data: imageData)
+        self.favoriteButton.tintColor = item.isFavorite ? .yellow : .white
     }
 }
 
 extension SearchPhotoCollectionViewCell {
     @objc private func didTapFavoriteButton(_ sender: UIButton) {
-        print(#function)
+        viewModel.toggleFavoriteButton(item: item)
     }
 }

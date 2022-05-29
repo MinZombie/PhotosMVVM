@@ -161,7 +161,7 @@ extension PhotoListViewController: UICollectionViewDataSource, UICollectionViewD
             for: indexPath
         ) as? SearchPhotoCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.configureItem(with: viewModel.photos.value[indexPath.row])
+        cell.configureItem(with: viewModel.photos.value[indexPath.row], viewModel: viewModel)
         
         return cell
     }

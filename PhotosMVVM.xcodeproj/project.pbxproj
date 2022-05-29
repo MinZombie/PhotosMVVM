@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A93113B4283E0F43007E7679 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93113B3283E0F43007E7679 /* FavoriteViewController.swift */; };
 		A93113B62840F464007E7679 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93113B52840F464007E7679 /* Photo.swift */; };
+		A93113B928411935007E7679 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A93113B728411935007E7679 /* Model.xcdatamodeld */; };
+		A93114092841F625007E7679 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93114082841F625007E7679 /* CoreDataManager.swift */; };
 		A9B4791727FEACF800A2757A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4791627FEACF800A2757A /* AppDelegate.swift */; };
 		A9B4791927FEACF800A2757A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4791827FEACF800A2757A /* SceneDelegate.swift */; };
 		A9B4791B27FEACF800A2757A /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4791A27FEACF800A2757A /* PhotoListViewController.swift */; };
@@ -40,6 +42,8 @@
 /* Begin PBXFileReference section */
 		A93113B3283E0F43007E7679 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A93113B52840F464007E7679 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		A93113B828411935007E7679 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		A93114082841F625007E7679 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		A9B4791327FEACF800A2757A /* PhotosMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B4791627FEACF800A2757A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9B4791827FEACF800A2757A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				A9B4793327FEB5E300A2757A /* APIManager.swift */,
+				A93114082841F625007E7679 /* CoreDataManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 				A9B4791627FEACF800A2757A /* AppDelegate.swift */,
 				A9B4791827FEACF800A2757A /* SceneDelegate.swift */,
 				A9B4791F27FEACFA00A2757A /* Assets.xcassets */,
+				A93113B728411935007E7679 /* Model.xcdatamodeld */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -329,6 +335,8 @@
 				A9B4793027FEB5D400A2757A /* SearchViewModel.swift in Sources */,
 				A9B4795228007A3700A2757A /* Observable.swift in Sources */,
 				A9B4791927FEACF800A2757A /* SceneDelegate.swift in Sources */,
+				A93113B928411935007E7679 /* Model.xcdatamodeld in Sources */,
+				A93114092841F625007E7679 /* CoreDataManager.swift in Sources */,
 				A9B4794427FEBD3400A2757A /* Bundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,6 +613,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A93113B728411935007E7679 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A93113B828411935007E7679 /* Model.xcdatamodel */,
+			);
+			currentVersion = A93113B828411935007E7679 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A9B4790B27FEACF800A2757A /* Project object */;
 }

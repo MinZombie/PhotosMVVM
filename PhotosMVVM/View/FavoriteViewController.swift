@@ -19,11 +19,24 @@ class FavoriteViewController: UIViewController {
         
         setUpCollectionView()
         setUpNavigation()
+        
+        observe(viewModel: viewModel)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.loadAllFavoritePhotos()
     }
     
     convenience init(viewModel: SearchViewModel) {
         self.init()
         self.viewModel = viewModel
+    }
+    
+    private func observe(viewModel: SearchViewModel) {
+        viewModel.favoritePhotos.bind { [weak self] _ in
+            self?.collectionView?.reloadData()
+        }
     }
     
     private func setUpNavigation() {
@@ -80,12 +93,12 @@ extension FavoriteViewController {
 
 extension FavoriteViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.photos.value.count
+        return viewModel.favoritePhotos.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchPhotoCollectionViewCell.identifier, for: indexPath) as? SearchPhotoCollectionViewCell else { return UICollectionViewCell() }
-        cell.configureItem(with: viewModel.photos.value[indexPath.row])
+        cell.configureItem(with: viewModel.favoritePhotos.value[indexPath.row], viewModel: viewModel)
         return cell
     }
 }

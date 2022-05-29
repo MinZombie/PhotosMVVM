@@ -10,10 +10,13 @@ import Foundation
 protocol SearchViewModelInput {
     func search(text: String)
     func fetchNextPage()
+    func toggleFavoriteButton(item: Photo)
+    func loadAllFavoritePhotos()
 }
 
 protocol SearchViewModelOutput {
     var photos: Observable<[Photo]> { get }
+    var favoritePhotos: Observable<[Photo]> { get }
     var isLoading: Observable<Bool> { get }
 }
 
@@ -30,6 +33,7 @@ final class DefaultSearchViewModel: SearchViewModel {
     
     // MARK: - Output
     var photos: Observable<[Photo]> = Observable([])
+    var favoritePhotos: Observable<[Photo]> = Observable([])
     var isLoading: Observable<Bool> = Observable(false)
     
     var service: ServiceProtocol
@@ -38,6 +42,15 @@ final class DefaultSearchViewModel: SearchViewModel {
         self.service = service
     }
     
+}
+
+// MARK: - Private
+extension DefaultSearchViewModel {
+    private func getFavoritePhotoId(response: PhotoSearchResponse) -> Set<String?> {
+        let favoritePhotoId = Set(CoreDataManager.shared.get().map { $0.id })
+        let searchedPhotoId = Set(response.results.map { $0.id })
+        return favoritePhotoId.intersection(searchedPhotoId)
+    }
 }
 
 extension DefaultSearchViewModel {
@@ -52,14 +65,20 @@ extension DefaultSearchViewModel {
             
             switch photos {
             case .success(let response):
-                var photos = [Photo]()
+                var temp = [Photo]()
+                let idForFavorite = self.getFavoritePhotoId(response: response)
+                
                 response.results.forEach { result in
                     
-                    let photo = Photo(id: result.id, imagePath: result.urls.thumb, isFavorite: false)
-                    photos.append(photo)
+                    let photo = Photo(
+                        id: result.id,
+                        imagePath: result.urls.thumb,
+                        isFavorite: idForFavorite.contains(result.id) ? true : false
+                    )
+                    temp.append(photo)
                 }
                 
-                self.photos.value = photos
+                self.photos.value = temp
                 self.totalPages = response.totalPages
                 
             case .failure(let error):
@@ -82,12 +101,14 @@ extension DefaultSearchViewModel {
                 switch result {
                 case .success(let response):
                     
+                    let idForFavorite = self.getFavoritePhotoId(response: response)
+                    
                     response.results.forEach { result in
                         self.photos.value.append(
                             .init(
                                 id: result.id,
                                 imagePath: result.urls.thumb,
-                                isFavorite: false
+                                isFavorite: idForFavorite.contains(result.id) ? true : false
                             )
                         )
                     }
@@ -97,5 +118,51 @@ extension DefaultSearchViewModel {
                 }
                 
             }
+    }
+    
+    func toggleFavoriteButton(item: Photo) {        
+        
+        if item.isFavorite {
+            CoreDataManager.shared.delete(id: item.id)
+
+            let filtered = favoritePhotos.value.filter { $0.id != item.id }
+            favoritePhotos.value = filtered
+            for i in 0..<photos.value.count {
+                if photos.value[i].id == item.id {
+                    photos.value[i].isFavorite = false
+                }
+            }
+            
+        } else {
+
+            CoreDataManager.shared.save(model: item)
+            favoritePhotos.value.append(
+                .init(
+                    id: item.id,
+                    imagePath: item.imagePath,
+                    isFavorite: true
+                )
+            )
+            for i in 0..<photos.value.count {
+                if photos.value[i].id == item.id {
+                    photos.value[i].isFavorite = true
+                }
+            }
+        }
+    }
+    
+    func loadAllFavoritePhotos() {
+        var temp = [Photo]()
+        let coreData = CoreDataManager.shared.get()
+        coreData.forEach {
+            temp.append(
+                .init(
+                    id: $0.id ?? "",
+                    imagePath: $0.imagePath ?? "",
+                    isFavorite: $0.isFavorite
+                )
+            )
+        }
+        self.favoritePhotos.value = temp
     }
 }
